@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" th:href="@{/css/webStyle.css}">
+</head>
+<body>
+<header>
+    <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
+    <a th:href="@{/admin/logout}" id="log_out_link">Log out</a>
+</header>
+<br><br><br><br>
+<div class="appointment_block">
+    <div class = "barber_part">
+        <img src="https://straightouttathelair.com/wp-content/uploads/2024/09/straight-outta-the-lair-podcast-guest-ep99-dan-bilzerian-300x300.jpg"/>
+        <p>Artak Petrosyan</p>
+    </div>
+    <div class="client_info">
+        <table>
+            <tbody>
+            <tr>
+                <th scope="row">Full Name:</th>
+                <td>Ben Johnson</td>
+            </tr>
+            <tr>
+                <th scope="row">Phone Number:</th>
+                <td>+37477885523</td>
+            </tr>
+            <tr>
+                <th scope="row">Email:</th>
+                <td>benjohn@gmail.com</td>
+            </tr>
+            <tr>
+                <th scope="row">Date and Time:</th>
+                <td>05.05.2025, 15:30</td>
+                <td><a href="">Edit</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

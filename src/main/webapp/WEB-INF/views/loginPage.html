@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" th:href="@{/css/webStyle.css}">
+</head>
+<body>
+<div class="default_place">
+    <p id="top_text">Log in</p>
+    <form th:action="@{/admin/login}" method="post" id="login_form">
+        <input type="text" name="login" placeholder="Login"><br>
+        <p th:if="${hasErrors}" class="wrong_error_text" th:text="${wrong_login}"></p>
+        <input type="password" name="password" placeholder="Password"><br>
+        <p th:if="${hasErrors}" class="wrong_error_text" th:text="${wrong_password}">wrong password</p>
+        <input type="submit" value="Add" class="submit_button">
+    </form>
+</div>
+</body>
+</html>

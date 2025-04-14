@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add barber</title>
+    <link rel="stylesheet" th:href="@{/css/webStyle.css}">
+</head>
+<body>
+<div class="default_place">
+    <p id="top_text">Add Barber</p>
+    <form action="" method="post" id="add_barber_form" enctype="multipart/form-data" th:object="${barber}">
+        <input type="text" th:field="*{fullName}" placeholder="Full name"><br>
+        <input type="number" th:field="*{hairCutPrice}" placeholder="Haircut price"><br>
+        <input type="number" th:field="*{shavingPrice}" placeholder="Shaving price"><br>
+        <input type="file" name="photo"><br>
+        <input type="submit" value="Add" class="submit_button">
+    </form>
+</div>
+</body>
+</html>

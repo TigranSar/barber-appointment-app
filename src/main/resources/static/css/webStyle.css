@@ -1,0 +1,180 @@
+body{
+    background-image:
+            linear-gradient(rgb(75 74 74 / 47%),
+            rgb(75 74 74 / 47%)),
+            url("../images/barb_bg.jpg");
+    background-repeat: repeat;
+    background-size: 250px 250px;
+}
+.choose_barber{
+    display: flex;
+    width: 320px;
+    height: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#choose_barber_link{
+    background-color: #d9f2ff;
+    width: 150px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #2a2e53;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.5s ease;
+}
+#choose_barber_link:hover{
+    background-color: #81c4d9;
+}
+#login_as_admin{
+    font-family: sans-serif;
+    text-decoration: none;
+    color: #d7e0ff;
+    background-color: #242426ad;
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 205px;
+    margin-left: 90px;
+    margin-bottom: 25px;
+}
+#login_as_admin:hover{
+    background-color: #242426db;
+}
+.default_place{
+    background-color: white;
+    width: 320px;
+    height: 400px;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#top_text{
+    color: #2a2e53;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+#add_barber_form, #login_form {
+    margin-top: 50px;
+}
+#add_barber_form input, #login_form input{
+    margin-bottom: 10px;
+    margin-left: 30px;
+    width: 250px;
+    height: 35px;
+}
+
+.wrong_error_text{
+    color: #fb3434;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 1px;
+}
+.submit_button{
+    background-color: #1383e6;
+    border: #1383e6;
+    color: white;
+    transition: background-color 0.5s ease;
+}
+.submit_button:hover{
+    background-color: #4e9ee4;
+}
+
+header{
+    background-color: white;
+    width: 1366px;
+    height: 75px;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+#log_out_link, #add_barber_link{
+    color: #2259a5;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    transition: color 0.3s ease;
+    position: relative;
+    top: 25px;
+    left: 85%;
+}
+#add_barber_link{
+    position: relative;
+    top: 25px;
+    left: 5%;
+}
+#add_barber_link:hover, #log_out_link:hover{
+    color: #4180d7;
+}
+.appointment_block{
+    display: flex;
+    margin-left: 170px;
+    background-color: white;
+    margin-top: 30px;
+    border-radius: 10px;
+    width: 1000px;
+    height: 250px;
+}
+.client_info{
+    background-color: white;
+    width: 600px;
+    height: 170px;
+    margin-top: 38px;
+    margin-left: 30px;
+}
+.client_info table{
+    margin-top: 35px;
+}
+.client_info table th{
+    color: #18488b;
+    font-family: sans-serif;
+    font-weight: 100;
+    padding-right: 30px;
+    font-size: 18px;
+    text-align: left;
+}
+.client_info table tr{
+    color: #8095f2;
+    font-family: sans-serif;
+    font-weight: 100;
+    font-size: 18px;
+}
+.client_info table a{
+    color: #18488b;
+    text-decoration: none;
+}
+.barber_part{
+    background-color: white;
+    width: 250px;
+    height: 200px;
+    margin-top: 25px;
+}
+.barber_part img{
+    border-radius: 200px;
+    width: 120px;
+    margin-left: 70px;
+}
+.barber_part p{
+    text-align: center;
+    margin-top: 25px;
+    color: #2259a5;
+    font-family: sans-serif;
+    font-size: 20px;
+}
