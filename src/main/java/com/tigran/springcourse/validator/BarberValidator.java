@@ -14,10 +14,21 @@ public class BarberValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Barber barber = (Barber)target;
+        String fullName= barber.getFullName();
+        int hairCutPrice = barber.getHairCutPrice();
+        int shavingPrice = barber.getShavingPrice();
         ValidationUtils.rejectIfEmpty(errors,
                 "fullName","NotEmpty.barber.fullName","Full name cannot be empty");
-        if (!barber.getFullName().matches("^[A-Za-zА-Яа-яЁё\\s]+$")){
+        if (fullName != null){
+            if (!barber.getFullName().matches("^[A-Za-zА-Яа-яЁё\\s]+$")){
             errors.rejectValue("fullName","Invalid.fullName","Full name cannot contain digits");
+            }
+            if (fullName.length() < 2 || fullName.length() > 80){
+                errors.rejectValue("fullName","Invalid.size.fullName","Full name length should be between 2 and 80");
+            }
+        }
+        if (hairCutPrice > 100 || hairCutPrice < 1){
+//            errors.rejectValue("hair");;
         }
     }
 }

@@ -17,6 +17,5 @@ public class AppointmentValidator implements Validator {
         if (appointment.getFullName().matches("^[A-Za-zА-Яа-яЁё\\s]+$")){
             errors.rejectValue("fullName","Invalid.fullName","Full name cannot contain digits");
         }
-
     }
 }
