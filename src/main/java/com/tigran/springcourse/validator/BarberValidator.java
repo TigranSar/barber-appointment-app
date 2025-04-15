@@ -1,10 +1,12 @@
 package com.tigran.springcourse.validator;
 
 import com.tigran.springcourse.models.Barber;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+@Component
 public class BarberValidator implements Validator {
     @Override
     public boolean supports(Class<?> clazz) {
@@ -27,8 +29,12 @@ public class BarberValidator implements Validator {
                 errors.rejectValue("fullName","Invalid.size.fullName","Full name length should be between 2 and 80");
             }
         }
-        if (hairCutPrice > 100 || hairCutPrice < 1){
-//            errors.rejectValue("hair");;
+        if (hairCutPrice > 1000 || hairCutPrice < 1){
+            errors.rejectValue("hairCutPrice","Invalid.hairCutPrice","Haircut price should be between 1 and 100");
+        }
+        if (shavingPrice > 1000 || shavingPrice < 1){
+            errors.rejectValue("shavingPrice","Invalid.shavingPrice","Shaving price should be between 1 and 1000");
         }
     }
+
 }
