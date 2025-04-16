@@ -3,8 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Barbers</title>
+    <link rel="stylesheet" th:href="@{/css/webStyle.css}">
+    <link rel="stylesheet" th:href="@{/css/barberListStyle.css}">
 </head>
 <body>
-
+<header>
+    <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
+    <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
+    <a th:if="${hasSession}" th:href="@{/admin/logout}" id="log_out_link">Log out</a>
+</header>
+<br><br><br><br>
+<div class="barber-grid">
+    <div class="barber-card" th:each="barber : ${barberList}">
+        <img th:src="@{${barber.getPhotopath()}}">
+        <h3 th:text="${barber.getFullName()}">Full name</h3>
+        <p th:text="${'Haircut Price: ' + barber.getHairCutPrice()}">Hair Cut Price</p>
+        <p th:text="${'Shaving Price: ' + barber.getShavingPrice()}">Shaving Price</p>
+    </div>
+</div>
 </body>
 </html>

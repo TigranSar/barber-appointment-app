@@ -1,0 +1,19 @@
+.barber-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.barber-card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    font-family: sans-serif;
+    color: #123d7a;
+}
+.barber-card img{
+    border-radius: 250px;
+    width: 180px;
+    height: 180px;
+}

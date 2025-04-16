@@ -6,6 +6,10 @@
     <link rel="stylesheet" th:href="@{/css/webStyle.css}">
 </head>
 <body>
+<header>
+    <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
+    <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
+</header>
 <div class="default_place">
     <p id="top_text">Log in</p>
     <form th:action="@{/admin/login}" method="post" id="login_form">

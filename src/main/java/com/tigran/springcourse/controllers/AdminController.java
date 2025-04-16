@@ -72,33 +72,32 @@ public class AdminController {
     public String addBarber(@ModelAttribute("barber") Barber barber,
                             @RequestParam(value = "photo", required = false) MultipartFile file,
                             RedirectAttributes redirectAttributes,
-                            BindingResult bindingResult,
                             HttpSession httpSession) throws IOException {
         String session = (String)httpSession.getAttribute("admin");
         if (session != null) {
-            barberValidator.validate(barber, bindingResult);
-            if (bindingResult.hasErrors()) {
-                return "addBarberPage";
-            }
             String uploadDir = "C:/Users/benja/IdeaProjects/SpringLesson/uploads";
-            String photoPath = "/images/noPhoto.png";
-            if (file != null) {
+            String photoPath = "/uploads/nophoto.png";
+            if (file != null && !file.isEmpty()) {
                 File uploadPath = new File(uploadDir);
                 String fileName = file.getOriginalFilename();
-                String fileType = fileName.substring(fileName.lastIndexOf("."));
-                String savedFileName = "photo_" + UUID.randomUUID() + fileType;
-                Path path = Paths.get(uploadDir, savedFileName);
-                photoPath = "uploads/" + savedFileName;
-                barber.setPhotopath(photoPath);
-                Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+                int dotIndex = fileName.lastIndexOf(".");
+                if (dotIndex != -1 && dotIndex < fileName.length() - 1) {
+                    String fileType = fileName.substring(dotIndex);
+                    String savedFileName = "photo_" + UUID.randomUUID() + fileType;
+                    Path path = Paths.get(uploadDir, savedFileName);
+                    photoPath = "/uploads/" + savedFileName;
+                    barber.setPhotopath(photoPath);
+                    Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+                } else {
+                    barber.setPhotopath(photoPath);
+                }
             } else {
                 barber.setPhotopath(photoPath);
             }
-            redirectAttributes.addFlashAttribute("barber",barber);
             barberDAO.addBarber(barber);
-            return "redirect:/barberList";
+            return "redirect:barberList";
         }
-        return "redirect:/login_page";
+        return "redirect:login_page";
     }
 
     @GetMapping("/admin")
@@ -110,7 +109,7 @@ public class AdminController {
         }
         return "redirect:/admin/login_page";
     }
-    @GetMapping("logout")
+    @GetMapping("/logout")
     public String logOut(HttpSession httpSession){
         String session = (String)httpSession.getAttribute("admin");
         if (session != null){
@@ -119,11 +118,12 @@ public class AdminController {
         }
         return "redirect:/";
     }
-    @GetMapping("barberList")
+    @GetMapping("/barberList")
     public String barberList(Model model, HttpSession httpSession){
         String session = (String)httpSession.getAttribute("admin");
-        if (session != null){
-        }
+        model.addAttribute("barberList",barberDAO.getAllBarbers());
+        boolean hasSession = session != null;
+        model.addAttribute("hasSession",hasSession);
         return "barberList";
     }
 }

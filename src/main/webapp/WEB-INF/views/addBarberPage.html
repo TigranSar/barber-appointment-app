@@ -6,9 +6,14 @@
     <link rel="stylesheet" th:href="@{/css/webStyle.css}">
 </head>
 <body>
+<header>
+    <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
+    <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
+    <a th:href="@{/admin/logout}" id="log_out_link">Log out</a>
+</header>
 <div class="default_place">
     <p id="top_text">Add Barber</p>
-    <form action="" method="post" id="add_barber_form" enctype="multipart/form-data" th:object="${barber}">
+    <form action="add_barber" method="post" id="add_barber_form" enctype="multipart/form-data" th:object="${barber}">
         <input type="text" th:field="*{fullName}" placeholder="Full name"><br>
         <input type="number" th:field="*{hairCutPrice}" placeholder="Haircut price"><br>
         <input type="number" th:field="*{shavingPrice}" placeholder="Shaving price"><br>
