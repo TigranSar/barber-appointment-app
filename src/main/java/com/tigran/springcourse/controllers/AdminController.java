@@ -76,7 +76,7 @@ public class AdminController {
         String session = (String)httpSession.getAttribute("admin");
         if (session != null) {
             String uploadDir = "C:/Users/benja/IdeaProjects/SpringLesson/uploads";
-            String photoPath = "/uploads/nophoto.png";
+            String photoPath = "/images/noPhoto.png";
             if (file != null && !file.isEmpty()) {
                 File uploadPath = new File(uploadDir);
                 String fileName = file.getOriginalFilename();
@@ -121,9 +121,9 @@ public class AdminController {
     @GetMapping("/barberList")
     public String barberList(Model model, HttpSession httpSession){
         String session = (String)httpSession.getAttribute("admin");
-        model.addAttribute("barberList",barberDAO.getAllBarbers());
         boolean hasSession = session != null;
         model.addAttribute("hasSession",hasSession);
+        model.addAttribute("barberList",barberDAO.getAllBarbers());
         return "barberList";
     }
 }
