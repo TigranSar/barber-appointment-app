@@ -1,13 +1,10 @@
-package com.tigran.springcourse.controllers;
+package com.tigran.springcourse.controllers.admin;
 
 import com.tigran.springcourse.DAO.BarberDAO;
 import com.tigran.springcourse.models.Barber;
-import com.tigran.springcourse.validator.BarberValidator;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -22,15 +19,12 @@ import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminController {
+public class AddBarberController {
     private BarberDAO barberDAO;
-    private BarberValidator barberValidator;
 
-    public AdminController(BarberValidator barberValidator, BarberDAO barberDAO) {
-        this.barberValidator = barberValidator;
+    public AddBarberController(BarberDAO barberDAO) {
         this.barberDAO = barberDAO;
     }
-
     @GetMapping("/add_barber_page")
     public String addBarberPage(HttpSession httpSession, Model model){
         String session = (String)httpSession.getAttribute("admin");
@@ -39,33 +33,6 @@ public class AdminController {
         }
         model.addAttribute("barber",new Barber());
         return "addBarberPage";
-    }
-
-    @GetMapping("/login_page")
-    public String loginPage(){
-        return "loginPage";
-    }
-
-    @PostMapping("/login")
-    public String login(@RequestParam("login") String login,
-                        @RequestParam("password") String password,
-                        Model model,
-                        HttpSession httpSession){
-        boolean hasErrors = false;
-        if (!login.equals("admin")){
-            hasErrors = true;
-            model.addAttribute("wrong_login","Wrong login");
-        }
-        if (!password.equals("admin")){
-            hasErrors = true;
-            model.addAttribute("wrong_password","Wrong password");
-        }
-        if (hasErrors){
-            model.addAttribute("hasErrors",hasErrors);
-            return "loginPage";
-        }
-        httpSession.setAttribute("admin","admin12345");
-        return "redirect:/admin/admin";
     }
 
     @PostMapping("/add_barber")
@@ -98,32 +65,5 @@ public class AdminController {
             return "redirect:barberList";
         }
         return "redirect:login_page";
-    }
-
-    @GetMapping("/admin")
-    public String adminPage(HttpSession httpSession){
-        String session = (String)httpSession.getAttribute("admin");
-        if (session != null){
-            httpSession.setMaxInactiveInterval(15*60);
-            return "adminPage";
-        }
-        return "redirect:/admin/login_page";
-    }
-    @GetMapping("/logout")
-    public String logOut(HttpSession httpSession){
-        String session = (String)httpSession.getAttribute("admin");
-        if (session != null){
-            httpSession.invalidate();
-            return "redirect:/admin/login_page";
-        }
-        return "redirect:/";
-    }
-    @GetMapping("/barberList")
-    public String barberList(Model model, HttpSession httpSession){
-        String session = (String)httpSession.getAttribute("admin");
-        boolean hasSession = session != null;
-        model.addAttribute("hasSession",hasSession);
-        model.addAttribute("barberList",barberDAO.getAllBarbers());
-        return "barberList";
     }
 }

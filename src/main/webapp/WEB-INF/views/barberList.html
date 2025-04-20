@@ -10,13 +10,13 @@
 <header>
     <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
     <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
-    <a th:if="${hasSession}" th:href="@{/admin/logout}" id="log_out_link">Log out</a>
+    <a th:href="@{/admin/logout}" id="log_out_link">Log out</a>
 </header>
 <div class="barber-grid">
     <div class="barber-card" th:each="barber : ${barberList}">
         <img th:src="@{${barber.getPhotopath()}}">
         <div class="edit_link">
-            <a href="https://www.google.com/"><img th:src="@{/images/edit.png}"></a>
+            <a th:href="@{/admin/update_barber_page/{id}(id=${barber.id})}"><img th:src="@{/images/edit.png}"></a>
         </div>
         <h3 th:text="${barber.getFullName()}">Full name</h3>
         <p th:text="${'Haircut Price: ' + barber.getHairCutPrice() + '$'}">Hair Cut Price</p>

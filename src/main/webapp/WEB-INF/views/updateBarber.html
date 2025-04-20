@@ -3,8 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Barber Info</title>
+    <link rel="stylesheet" th:href="@{/css/webStyle.css}">
 </head>
 <body>
+<header>
+    <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
+    <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
+    <a th:href="@{/admin/logout}" id="log_out_link">Log out</a>
+</header>
+<div class="default_place" style="height: 500px; top: 55%;">
+    <p id="top_text">Update Barber Info</p>
+    <form th:action="@{/admin/update_barber}" method="post" id="add_barber_form" enctype="multipart/form-data" th:object="${barber}">
+        <div style="position: relative; display: inline-block;">
+            <img th:src="@{${barber.photopath}}"
+                 id="updating_photo">
+            <label for="imageFile" id="update_photo_button">Change photo</label>
+            <input type="file" id="imageFile" name="imageFile" style="display: none;"/>
+            <button th:formaction="@{/admin/delete_barber_photo/{id}(id=${barber.id})}" th:formmethod="post" id="delete_button">×</button>
+        </div>
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{photopath}">
+        <input type="text" th:field="*{fullName}" placeholder="Full name"><br>
+        <input type="number" th:field="*{hairCutPrice}" placeholder="Haircut price"><br>
+        <input type="number" th:field="*{shavingPrice}" placeholder="Shaving price"><br>
+        <input type="submit" value="Update" class="submit_button">
+    </form>
+    <form th:action="@{/admin/delete_barber/{id}(id = ${barber.id})}" th:method="post" id="delete_barber_button">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Barber">
+    </form>
+</div>
+<script>
+    const imageInput = document.getElementById("imageFile");
+    const imagePreview = document.getElementById("updating_photo");
 
+    imageInput.addEventListener("change", function () {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 </body>
 </html>

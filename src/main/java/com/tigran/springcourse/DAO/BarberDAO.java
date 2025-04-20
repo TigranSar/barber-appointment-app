@@ -24,8 +24,8 @@ public class BarberDAO{
         return (Barber)jdbcTemplate.queryForObject(sql, new BarberRowMapper(), id);
     }
     public void updateBarber(Barber barber){
-        String sql = "UPDATE barbers SET fullName = ?, hairCutPrice = ?, shavingPrice = ?, photopath = ?";
-        jdbcTemplate.update(sql,barber.getFullName(),barber.getHairCutPrice(),barber.getShavingPrice(),barber.getPhotopath());
+        String sql = "UPDATE barbers SET fullName = ?, hairCutPrice = ?, shavingPrice = ?, photopath = ? WHERE id = ?";
+        jdbcTemplate.update(sql,barber.getFullName(),barber.getHairCutPrice(),barber.getShavingPrice(),barber.getPhotopath(),barber.getId());
     }
     public List<Barber> getAllBarbers(){
         String sql = "SELECT * FROM barbers";

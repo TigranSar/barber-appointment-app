@@ -23,24 +23,4 @@ public class FirstController {
     public String index(){
         return "index";
     }
-
-    @PostMapping("/upload")
-    public String showImage(@RequestParam(value = "file", required = false)
-                                MultipartFile file,
-                            Model model) throws IOException{
-//        String uploadDir = "C:/Users/benja/IdeaProjects/SpringLesson/uploads";
-//        String photoPath = "";
-//        if(file != null) {
-//            File uploadPath = new File(uploadDir);
-//            String fileName = file.getOriginalFilename();
-//            String fileType = fileName.substring(fileName.lastIndexOf("."));
-//            String savedFileName = "photo_" + UUID.randomUUID() + fileType;
-//            Path path = Paths.get(uploadDir, savedFileName);
-//            photoPath = "uploads/" + savedFileName;
-//            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-//        }
-//        model.addAttribute("photoPath", photoPath);
-//        System.out.println("photopath :"+photoPath);
-        return "imagePage";
-    }
 }
