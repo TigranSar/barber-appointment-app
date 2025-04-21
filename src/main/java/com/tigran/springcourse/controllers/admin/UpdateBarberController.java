@@ -2,6 +2,7 @@ package com.tigran.springcourse.controllers.admin;
 
 import com.tigran.springcourse.DAO.BarberDAO;
 import com.tigran.springcourse.models.Barber;
+import com.tigran.springcourse.service.FileService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +21,11 @@ import java.util.UUID;
 @RequestMapping("/admin")
 public class UpdateBarberController {
     private BarberDAO barberDAO;
+    private FileService fileService;
 
-    public UpdateBarberController(BarberDAO barberDAO) {
+    public UpdateBarberController(BarberDAO barberDAO, FileService fileService) {
         this.barberDAO = barberDAO;
+        this.fileService = fileService;
     }
 
     @GetMapping("update_barber_page/{id}")
@@ -34,6 +37,7 @@ public class UpdateBarberController {
         }
         return "redirect:/admin/login_page";
     }
+
     @PostMapping("/delete_barber_photo/{id}")
     public String deleteBarberPhoto(@PathVariable("id") int id, HttpSession httpSession){
         String session = (String)httpSession.getAttribute("admin");
@@ -56,21 +60,9 @@ public class UpdateBarberController {
                                HttpSession httpSession) throws IOException {
         String session = (String)httpSession.getAttribute("admin");
         if (session != null){
-            if (file != null && !file.isEmpty()) {
-                if (!barber.getPhotopath().equals("/images/noPhoto.png")){
-                    new File("C:/Users/benja/IdeaProjects/SpringLesson"+barber.getPhotopath()).delete();
-                }
-                String uploadDir = "C:/Users/benja/IdeaProjects/SpringLesson/uploads";
-                File uploadPath = new File(uploadDir);
-                String fileName = file.getOriginalFilename();
-                int dotIndex = fileName.lastIndexOf(".");
-                if (dotIndex != -1 && dotIndex < fileName.length() - 1) {
-                    String fileType = fileName.substring(dotIndex);
-                    String savedFileName = "photo_" + UUID.randomUUID() + fileType;
-                    Path path = Paths.get(uploadDir, savedFileName);
-                    barber.setPhotopath("/uploads/" + savedFileName);
-                    Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-                }
+            String uploadedPath = fileService.updateImage(file,barber.getPhotopath());
+            if (uploadedPath != null){
+                barber.setPhotopath(uploadedPath);
             }
             barberDAO.updateBarber(barber);
             return "redirect:/admin/barberList";

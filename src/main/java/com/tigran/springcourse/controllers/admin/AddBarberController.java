@@ -2,6 +2,7 @@ package com.tigran.springcourse.controllers.admin;
 
 import com.tigran.springcourse.DAO.BarberDAO;
 import com.tigran.springcourse.models.Barber;
+import com.tigran.springcourse.service.FileService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +22,13 @@ import java.util.UUID;
 @RequestMapping("/admin")
 public class AddBarberController {
     private BarberDAO barberDAO;
+    private FileService fileService;
 
-    public AddBarberController(BarberDAO barberDAO) {
+    public AddBarberController(BarberDAO barberDAO, FileService fileService) {
         this.barberDAO = barberDAO;
+        this.fileService = fileService;
     }
+
     @GetMapping("/add_barber_page")
     public String addBarberPage(HttpSession httpSession, Model model){
         String session = (String)httpSession.getAttribute("admin");
@@ -42,24 +46,11 @@ public class AddBarberController {
                             HttpSession httpSession) throws IOException {
         String session = (String)httpSession.getAttribute("admin");
         if (session != null) {
-            String uploadDir = "C:/Users/benja/IdeaProjects/SpringLesson/uploads";
-            String photoPath = "/images/noPhoto.png";
-            if (file != null && !file.isEmpty()) {
-                File uploadPath = new File(uploadDir);
-                String fileName = file.getOriginalFilename();
-                int dotIndex = fileName.lastIndexOf(".");
-                if (dotIndex != -1 && dotIndex < fileName.length() - 1) {
-                    String fileType = fileName.substring(dotIndex);
-                    String savedFileName = "photo_" + UUID.randomUUID() + fileType;
-                    Path path = Paths.get(uploadDir, savedFileName);
-                    photoPath = "/uploads/" + savedFileName;
-                    barber.setPhotopath(photoPath);
-                    Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-                } else {
-                    barber.setPhotopath(photoPath);
-                }
-            } else {
+            String photoPath = fileService.saveImage(file);
+            if (photoPath != null){
                 barber.setPhotopath(photoPath);
+            }else {
+                barber.setPhotopath("/images/noPhoto.png");
             }
             barberDAO.addBarber(barber);
             return "redirect:barberList";
