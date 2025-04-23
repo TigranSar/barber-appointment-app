@@ -12,6 +12,7 @@
     <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
     <a th:href="@{/admin/logout}" id="log_out_link">Log out</a>
 </header>
+<br><br><br><br>
 <div class="barber-grid">
     <div class="barber-card" th:each="barber : ${barberList}">
         <img th:src="@{${barber.getPhotopath()}}">

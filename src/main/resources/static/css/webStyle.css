@@ -56,12 +56,16 @@ body{
 .default_place{
     background-color: white;
     width: 320px;
-    height: 400px;
+    height: 500px;
     border-radius: 15px;
     position: absolute;
-    top: 50%;
+    top: 56%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.default_place_error{
+    height: 500px;
+    top: 60%;
 }
 #top_text{
     color: #2a2e53;

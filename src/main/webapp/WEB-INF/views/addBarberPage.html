@@ -15,8 +15,11 @@
     <p id="top_text">Add Barber</p>
     <form th:action="@{/admin/add_barber}" method="post" id="add_barber_form" enctype="multipart/form-data" th:object="${barber}">
         <input type="text" th:field="*{fullName}" placeholder="Full name"><br>
+        <div class="wrong_error_text" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" style=""></div><br>
         <input type="number" th:field="*{hairCutPrice}" placeholder="Haircut price"><br>
+        <div class="wrong_error_text" th:if="${#fields.hasErrors('hairCutPrice')}" th:errors="*{hairCutPrice}"></div><br>
         <input type="number" th:field="*{shavingPrice}" placeholder="Shaving price"><br>
+        <div class="wrong_error_text" th:if="${#fields.hasErrors('shavingPrice')}" th:errors="*{shavingPrice}"></div><br>
         <input type="file" name="photo"><br>
         <input type="submit" value="Add" class="submit_button">
     </form>
