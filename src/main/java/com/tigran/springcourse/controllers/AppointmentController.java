@@ -43,7 +43,6 @@ public class AppointmentController {
                                   BindingResult bindingResult, Model model){
         appointmentValidator.validate(appointment,bindingResult);
         if (bindingResult.hasErrors()){
-            model.addAttribute("appointment",appointment);
             model.addAttribute("barber",barberDAO.getBarberById(appointment.getBarberId()));
             return "appointmentForm";
         }

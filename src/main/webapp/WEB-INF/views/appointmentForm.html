@@ -7,7 +7,7 @@
     <link rel="stylesheet" th:href="@{/css/barberListStyle.css}">
 </head>
 <body>
-<div class="default_place" style="height: 550px; top: 50%;">
+<div class="default_place" style="height: 650px; top: 60%;">
     <p class="top_text">Make an Appointment</p>
     <form th:action="@{/client/sendAppointment}" method="post" style="margin-top: 10px;" id="add_barber_form" th:object="${appointment}">
         <div style="position: relative; display: inline-block;">
@@ -23,14 +23,16 @@
         <div th:if="${#fields.hasErrors('phoneNumber')}">
             <p class="wrong_error_text" th:text="${#fields.errors('phoneNumber')[0]}"></p>
         </div>
-        <div style="margin-bottom: 10px;">
+        <div style="margin-bottom: 10px; display: flex">
             <input type="checkbox" id="haircut" th:field="*{hairCut}" style="width: 25px;">
-            <label for="haircut">Haircut</label>
-            <input type="checkbox" id="shaving" th:field="*{shaving}" style="width: 25px; margin-left: 10px;">
-            <label for="shaving">Shaving</label>
+            <label for="haircut" style="margin-top: 12px;margin-left: 5px;">Haircut</label>
+            <input type="checkbox" id="shaving" th:field="*{shaving}" style="width: 25px;margin-left: 20px;">
+            <label for="shaving" style="margin-top: 12px;margin-left: 5px;">Shaving</label>
         </div>
-        <br>
-        <input type="datetime-local" th:field="*{appointmentDateTime}" required>
+        <div th:if="${#fields.hasErrors('shaving')}">
+            <p class="wrong_error_text" th:text="${#fields.errors('shaving')[0]}"></p>
+        </div>
+        <input type="datetime-local" th:field="*{appointmentDateTime}" required><br>
         <div th:if="${#fields.hasErrors('appointmentDateTime')}">
             <p class="wrong_error_text" th:text="${#fields.errors('appointmentDateTime')[0]}"></p>
         </div>

@@ -3,6 +3,7 @@ package com.tigran.springcourse.models;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,7 +17,8 @@ public class Appointment {
     private boolean shaving;
     @Size(min = 5, max = 30, message = "Phone number size should be between 5 and 30")
     private String phoneNumber;
-    @NotNull(message = "Date and time should not be empty")
+    @NotNull(message = "DateTime should not be empty")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime appointmentDateTime;
     public Appointment(){
 

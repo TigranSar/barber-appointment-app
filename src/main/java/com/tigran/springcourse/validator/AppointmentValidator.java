@@ -29,8 +29,13 @@ public class AppointmentValidator implements Validator {
                 errors.rejectValue("phoneNumber","Invalid.phoneNumber","Invalid phone number");
             }
         }
-        if (appointment.getAppointmentDateTime().isBefore(LocalDateTime.now())){
-            errors.rejectValue("appointmentDateTime","Date and time cannot be in the past");
+        if(appointment.getAppointmentDateTime() != null) {
+            if (appointment.getAppointmentDateTime().isBefore(LocalDateTime.now().minusMinutes(1))) {
+                errors.rejectValue("appointmentDateTime", "","Date and time cannot be in the past");
+            }
+        }
+        if (!appointment.isHairCut() && !appointment.isShaving()){
+            errors.rejectValue("shaving","","Enter the service type");
         }
 
     }
