@@ -38,7 +38,6 @@ public class AddBarberController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(Integer.class, new CustomNumberEditor(Integer.class, true));
-        System.out.println(">>> InitBinder сработал");
     }
 
     @GetMapping("/add_barber_page")

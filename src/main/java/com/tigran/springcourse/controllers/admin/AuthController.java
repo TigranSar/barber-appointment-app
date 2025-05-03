@@ -34,14 +34,14 @@ public class AuthController {
             return "loginPage";
         }
         httpSession.setAttribute("admin","admin12345");
-        return "redirect:main";
+        return "redirect:appointments";
     }
     @GetMapping("/logout")
     public String logOut(HttpSession httpSession){
         String session = (String)httpSession.getAttribute("admin");
         if (session != null){
             httpSession.invalidate();
-            return "redirect:login_page";
+            return "redirect:/";
         }
         return "redirect:/";
     }

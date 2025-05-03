@@ -9,10 +9,11 @@
 <header>
     <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
     <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
+    <a th:href="@{/admin/appointments}" id="appointments_link">Appointments</a>
     <a th:href="@{/admin/logout}" id="log_out_link">Log out</a>
 </header>
 <div class="default_place" style="height: 500px; top: 55%;">
-    <p id="top_text">Update Barber Info</p>
+    <p class="top_text">Update Barber Info</p>
     <form th:action="@{/admin/update_barber}" method="post" id="add_barber_form" enctype="multipart/form-data" th:object="${barber}">
         <div style="position: relative; display: inline-block;">
             <img th:src="@{${barber.photopath}}"

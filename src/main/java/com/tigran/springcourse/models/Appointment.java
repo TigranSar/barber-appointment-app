@@ -1,16 +1,23 @@
 package com.tigran.springcourse.models;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Appointment {
     private int id;
     private int barberId;
+    @Size(min = 2,max = 80, message = "Full name size should be between 2 and 80")
     private String fullName;
-    private String serviceType;
+    private boolean hairCut;
+    private boolean shaving;
+    @Size(min = 5, max = 30, message = "Phone number size should be between 5 and 30")
     private String phoneNumber;
+    @NotNull(message = "Date and time should not be empty")
     private LocalDateTime appointmentDateTime;
-    private String emailAddress;
     public Appointment(){
 
     }
@@ -31,12 +38,20 @@ public class Appointment {
         this.fullName = fullName;
     }
 
-    public String getServiceType() {
-        return serviceType;
+    public boolean isHairCut() {
+        return hairCut;
     }
 
-    public void setServiceType(String serviceType) {
-        this.serviceType = serviceType;
+    public void setHairCut(boolean hairCut) {
+        this.hairCut = hairCut;
+    }
+
+    public boolean isShaving() {
+        return shaving;
+    }
+
+    public void setShaving(boolean shaving) {
+        this.shaving = shaving;
     }
 
     public LocalDateTime getAppointmentDateTime() {
@@ -63,11 +78,4 @@ public class Appointment {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
 }

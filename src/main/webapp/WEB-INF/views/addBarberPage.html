@@ -9,10 +9,11 @@
 <header>
     <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
     <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
+    <a th:href="@{/admin/appointments}" id="appointments_link">Appointments</a>
     <a th:href="@{/admin/logout}" id="log_out_link">Log out</a>
 </header>
 <div class="default_place">
-    <p id="top_text">Add Barber</p>
+    <p class="top_text">Add Barber</p>
     <form th:action="@{/admin/add_barber}" method="post" id="add_barber_form" enctype="multipart/form-data" th:object="${barber}">
         <input type="text" th:field="*{fullName}" placeholder="Full name"><br>
         <div class="wrong_error_text" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}" style=""></div><br>

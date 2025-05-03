@@ -9,9 +9,10 @@
 <header>
     <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
     <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
+    <a th:href="@{/admin/appointments}" id="appointments_link">Appointments</a>
 </header>
 <div class="default_place">
-    <p id="top_text">Log in</p>
+    <p class="top_text">Log in</p>
     <form th:action="@{/admin/login}" method="post" id="login_form">
         <input type="text" name="login" placeholder="Login"><br>
         <p th:if="${hasErrors}" class="wrong_error_text" th:text="${wrong_login}"></p>

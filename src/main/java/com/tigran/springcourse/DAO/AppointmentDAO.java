@@ -16,24 +16,26 @@ public class AppointmentDAO{
     }
 
     public void addAppointment(Appointment appointment){
-        String sql = "INSERT INTO appointments (barberId,fullName,serviceType,phoneNumber,appointmentTime,emailAddress) VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO appointments (barberId,fullName,phoneNumber,appointmentTime,haircut,shaving) VALUES(?,?,?,?,?,?)";
         jdbcTemplate.update(sql,
                 appointment.getBarberId(),
                 appointment.getFullName(),
-                appointment.getServiceType(),
                 appointment.getPhoneNumber(),
                 appointment.getAppointmentDateTime(),
-                appointment.getEmailAddress());
+                appointment.isHairCut(),
+                appointment.isShaving()
+                );
     }
     public void updateAppointment(Appointment appointment){
-        String sql = "UPDATE appointments SET barberId = ?,fullName = ?,serviceType = ?,phoneNumber = ?,appointmentTime = ?,emailAddress = ?";
+        String sql = "UPDATE appointments SET barberId = ?,fullName = ?,phoneNumber = ?,appointmentTime = ?,haircut = ?,shaving = ? WHERE id = ?";
         jdbcTemplate.update(sql,
                 appointment.getBarberId(),
                 appointment.getFullName(),
-                appointment.getServiceType(),
                 appointment.getPhoneNumber(),
                 appointment.getAppointmentDateTime(),
-                appointment.getEmailAddress());
+                appointment.isHairCut(),
+                appointment.isShaving()
+                );
     }
     public Appointment getAppointmentById(int id){
         String sql = "SELECT * FROM appointments WHERE id = ?";

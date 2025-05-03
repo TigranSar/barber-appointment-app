@@ -16,13 +16,13 @@ body{
     transform: translate(-50%, -50%);
 }
 #choose_barber_link{
-    background-color: #d9f2ff;
+    background-color: #d9f2ffc4;
     width: 150px;
     padding-top: 30px;
     padding-bottom: 30px;
     padding-left: 30px;
     padding-right: 30px;
-    border-radius: 15px;
+    border-radius: 100px;
     text-decoration: none;
     color: #2a2e53;
     text-align: center;
@@ -34,15 +34,15 @@ body{
     transition: background-color 0.5s ease;
 }
 #choose_barber_link:hover{
-    background-color: #81c4d9;
+    background-color: #d9f2ff;
 }
 #login_as_admin{
     font-family: sans-serif;
     text-decoration: none;
     color: #d7e0ff;
-    background-color: #242426ad;
+    background-color: #242426bd;
     transition: background-color 0.3s ease;
-    border-radius: 10px;
+    border-radius: 100px;
     padding-top: 15px;
     padding-left: 15px;
     padding-right: 15px;
@@ -51,7 +51,7 @@ body{
     margin-bottom: 25px;
 }
 #login_as_admin:hover{
-    background-color: #242426db;
+    background-color: #242426;
 }
 .default_place{
     background-color: white;
@@ -67,7 +67,7 @@ body{
     height: 500px;
     top: 60%;
 }
-#top_text{
+.top_text{
     color: #2a2e53;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
@@ -109,7 +109,7 @@ header{
     top: 0%;
     left: 0%;
 }
-#log_out_link, #add_barber_link, #barber_list_link{
+#log_out_link, #add_barber_link, #barber_list_link,#appointments_link{
     padding: 12px;
     border-radius: 25px;
     background-color: #c1c1c138;
@@ -120,9 +120,9 @@ header{
     transition: color 0.3s ease;
     position: relative;
     top: 25px;
-    left: 73%;
+    left: 62%;
 }
-#add_barber_link,#barber_list_link{
+#add_barber_link,#barber_list_link,#appointments_link{
     padding: 12px;
     margin-left: 15px;
     border-radius: 25px;
@@ -134,7 +134,7 @@ header{
 #barber_list_link{
 
 }
-#add_barber_link:hover, #log_out_link:hover, #barber_list_link:hover{
+#add_barber_link:hover, #log_out_link:hover, #barber_list_link:hover,#appointments_link:hover{
     background-color: #c1c1c169;
 }
 .appointment_block{
@@ -179,6 +179,10 @@ header{
     width: 250px;
     height: 200px;
     margin-top: 25px;
+}
+.barber-card:hover {
+    background-color: #ffffffde;
+    transition: background-color 0.3s ease;
 }
 .barber_part img{
     border-radius: 200px;

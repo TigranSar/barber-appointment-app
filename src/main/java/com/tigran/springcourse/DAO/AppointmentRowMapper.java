@@ -13,10 +13,10 @@ public class AppointmentRowMapper implements RowMapper {
         appointment.setId(rs.getInt("id"));
         appointment.setBarberId(rs.getInt("barberId"));
         appointment.setFullName(rs.getString("fullName"));
-        appointment.setServiceType(rs.getString("serviceType"));
-        appointment.setServiceType(rs.getString("phoneNumber"));
+        appointment.setPhoneNumber(rs.getString("phoneNumber"));
         appointment.setAppointmentDateTime(rs.getTimestamp("appointmentTime").toLocalDateTime());
-        appointment.setEmailAddress(rs.getString("emailAddress"));
+        appointment.setHairCut(rs.getBoolean("haircut"));
+        appointment.setHairCut(rs.getBoolean("shaving"));
         return appointment;
     }
 }
