@@ -4,6 +4,7 @@ import com.tigran.springcourse.models.Appointment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -48,5 +49,12 @@ public class AppointmentDAO{
     public void deleteAppointment(int id){
         String sql = "DELETE FROM appointments WHERE id = ?";
         jdbcTemplate.update(sql,id);
+    }
+    public boolean isTimeAvailable(LocalDateTime dateTime, int barberid) {
+        LocalDateTime start = dateTime.minusMinutes(30);
+        LocalDateTime end = dateTime.plusMinutes(30);
+        String sql = "SELECT COUNT(*) FROM appointments WHERE appointmenttime BETWEEN ? AND ? AND barberid = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, start, end,barberid);
+        return count == 0;
     }
 }

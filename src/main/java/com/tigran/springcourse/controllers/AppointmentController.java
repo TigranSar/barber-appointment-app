@@ -1,5 +1,6 @@
 package com.tigran.springcourse.controllers;
 
+import com.tigran.springcourse.DAO.AppointmentDAO;
 import com.tigran.springcourse.DAO.BarberDAO;
 import com.tigran.springcourse.models.Appointment;
 import com.tigran.springcourse.validator.AppointmentValidator;
@@ -17,11 +18,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("client")
 public class AppointmentController {
     private BarberDAO barberDAO;
+    private AppointmentDAO appointmentDAO;
     private AppointmentValidator appointmentValidator;
 
     @Autowired
-    public AppointmentController(BarberDAO barberDAO, AppointmentValidator appointmentValidator) {
+    public AppointmentController(AppointmentDAO appointmentDAO, BarberDAO barberDAO, AppointmentValidator appointmentValidator) {
         this.barberDAO = barberDAO;
+        this.appointmentDAO = appointmentDAO;
         this.appointmentValidator = appointmentValidator;
     }
 
