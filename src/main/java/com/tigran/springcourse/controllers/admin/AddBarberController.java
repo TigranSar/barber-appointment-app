@@ -1,6 +1,6 @@
 package com.tigran.springcourse.controllers.admin;
 
-import com.tigran.springcourse.DAO.BarberDAO;
+import com.tigran.springcourse.dao.BarberDAO;
 import com.tigran.springcourse.models.Barber;
 import com.tigran.springcourse.service.FileService;
 import com.tigran.springcourse.validator.BarberValidator;
@@ -13,15 +13,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")

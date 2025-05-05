@@ -1,6 +1,6 @@
 package com.tigran.springcourse.controllers;
 
-import com.tigran.springcourse.DAO.BarberDAO;
+import com.tigran.springcourse.dao.BarberDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

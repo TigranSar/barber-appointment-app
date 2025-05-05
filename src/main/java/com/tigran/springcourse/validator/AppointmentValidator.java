@@ -1,6 +1,6 @@
 package com.tigran.springcourse.validator;
 
-import com.tigran.springcourse.DAO.AppointmentDAO;
+import com.tigran.springcourse.dao.AppointmentDAO;
 import com.tigran.springcourse.models.Appointment;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

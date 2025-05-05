@@ -1,7 +1,7 @@
 package com.tigran.springcourse.controllers;
 
-import com.tigran.springcourse.DAO.AppointmentDAO;
-import com.tigran.springcourse.DAO.BarberDAO;
+import com.tigran.springcourse.dao.AppointmentDAO;
+import com.tigran.springcourse.dao.BarberDAO;
 import com.tigran.springcourse.models.Appointment;
 import com.tigran.springcourse.validator.AppointmentValidator;
 import jakarta.validation.Valid;
@@ -43,12 +43,14 @@ public class AppointmentController {
     }
     @PostMapping("/sendAppointment")
     public String sendAppointment(@ModelAttribute("appointment") @Valid Appointment appointment,
-                                  BindingResult bindingResult, Model model){
+                                  BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes){
         appointmentValidator.validate(appointment,bindingResult);
         if (bindingResult.hasErrors()){
             model.addAttribute("barber",barberDAO.getBarberById(appointment.getBarberId()));
             return "appointmentForm";
         }
-        return "redirect:/client/choose_barber";
+        appointmentDAO.addAppointment(appointment);
+        redirectAttributes.addFlashAttribute("successMessage","Your appointment successfully booked for " + appointment.getAppointmentDateTime().toString());
+        return "redirect:/";
     }
 }

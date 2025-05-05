@@ -1,4 +1,4 @@
-package com.tigran.springcourse.DAO;
+package com.tigran.springcourse.dao;
 
 import com.tigran.springcourse.models.Barber;
 import org.springframework.jdbc.core.RowMapper;

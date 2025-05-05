@@ -1,9 +1,7 @@
-package com.tigran.springcourse.DAO;
+package com.tigran.springcourse.dao;
 
 import com.tigran.springcourse.models.Barber;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

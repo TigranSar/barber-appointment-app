@@ -13,10 +13,10 @@
     <a th:href="@{/admin/logout}" id="log_out_link">Log out</a>
 </header>
 <br><br><br><br>
-<div class="appointment_block">
+<div class="appointment_block" th:each="appointment : ${appointmentInfo}">
     <div class = "barber_part">
-        <img src="https://straightouttathelair.com/wp-content/uploads/2024/09/straight-outta-the-lair-podcast-guest-ep99-dan-bilzerian-300x300.jpg"/>
-        <p>Artak Petrosyan</p>
+        <img th:src="@{${appointment.getBarberPhotoPath()}}"/>
+        <p th:text="${appointment.getBarberFullName()}"></p>
     </div>
     <div class="client_info">
         <table>

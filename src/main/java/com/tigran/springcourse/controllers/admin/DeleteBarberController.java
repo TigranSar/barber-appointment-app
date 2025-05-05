@@ -1,6 +1,6 @@
 package com.tigran.springcourse.controllers.admin;
 
-import com.tigran.springcourse.DAO.BarberDAO;
+import com.tigran.springcourse.dao.BarberDAO;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;

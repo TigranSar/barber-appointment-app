@@ -1,6 +1,6 @@
 package com.tigran.springcourse.controllers.admin;
 
-import com.tigran.springcourse.DAO.BarberDAO;
+import com.tigran.springcourse.dao.BarberDAO;
 import com.tigran.springcourse.models.Barber;
 import com.tigran.springcourse.service.FileService;
 import jakarta.servlet.http.HttpSession;
@@ -11,11 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/admin")

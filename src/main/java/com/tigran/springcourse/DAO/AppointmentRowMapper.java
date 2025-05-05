@@ -1,4 +1,4 @@
-package com.tigran.springcourse.DAO;
+package com.tigran.springcourse.dao;
 
 import com.tigran.springcourse.models.Appointment;
 import org.springframework.jdbc.core.RowMapper;
