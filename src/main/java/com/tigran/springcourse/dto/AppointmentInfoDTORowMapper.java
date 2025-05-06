@@ -16,7 +16,8 @@ public class AppointmentInfoDTORowMapper implements RowMapper {
         appointmentInfoDTO.setClientFullName(rs.getString("client_fullname"));
         appointmentInfoDTO.setShaving(rs.getBoolean("shaving"));
         appointmentInfoDTO.setHariCut(rs.getBoolean("haircut"));
-        appointmentInfoDTO.setLocalDateTime(rs.getTimestamp("appointment_time").toLocalDateTime());
+        appointmentInfoDTO.setClientPhoneNumber(rs.getString("client_phone_number"));
+        appointmentInfoDTO.setAppointmentTime(rs.getTimestamp("appointment_time").toLocalDateTime());
         return appointmentInfoDTO;
     }
 }

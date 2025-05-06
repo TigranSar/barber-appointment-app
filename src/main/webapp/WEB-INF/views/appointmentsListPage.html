@@ -23,19 +23,15 @@
             <tbody>
             <tr>
                 <th scope="row">Full Name:</th>
-                <td>Ben Johnson</td>
+                <td th:text="${appointment.getClientFullName()}"></td>
             </tr>
             <tr>
                 <th scope="row">Phone Number:</th>
-                <td>+37477885523</td>
-            </tr>
-            <tr>
-                <th scope="row">Email:</th>
-                <td>benjohn@gmail.com</td>
+                <td th:text="${appointment.getClientPhoneNumber()}">+37477885523</td>
             </tr>
             <tr>
                 <th scope="row">Date and Time:</th>
-                <td>05.05.2025, 15:30</td>
+                <td th:text="${appointment.getAppointmentTime().toString()}">05.05.2025, 15:30</td>
                 <td><a href="">Edit</a></td>
             </tr>
             </tbody>

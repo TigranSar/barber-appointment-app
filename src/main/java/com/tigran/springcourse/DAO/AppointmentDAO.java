@@ -14,11 +14,9 @@ import java.util.List;
 public class AppointmentDAO{
 
     private JdbcTemplate jdbcTemplate;
-    private ServiceTypeService serviceType;
 
-    public AppointmentDAO(JdbcTemplate jdbcTemplate,ServiceTypeService serviceType) {
+    public AppointmentDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        this.serviceType = serviceType;
     }
 
     public void addAppointment(Appointment appointment){
@@ -63,7 +61,7 @@ public class AppointmentDAO{
         return count == 0;
     }
     public List<AppointmentInfoDTO> getAllAppointmentInfo(){
-        String sql = "select a.id as appointment_id,b.fullname as barber_fullname,b.photopath as barber_photopath,a.fullname as client_fullname,a.appointmenttime as appointment_time,a.haircut,a.shavingfrom appointments ainner join barbers b on a.barberid = b.id";
+        String sql = "select a.id as appointment_id,b.fullname as barber_fullname,b.photopath as barber_photopath,a.fullname as client_fullname,a.appointmenttime as appointment_time,a.haircut,a.shaving, a.phonenumber as client_phone_number from appointments a inner join barbers b on a.barberid = b.id";
         return jdbcTemplate.query(sql,new AppointmentInfoDTORowMapper());
     }
 }

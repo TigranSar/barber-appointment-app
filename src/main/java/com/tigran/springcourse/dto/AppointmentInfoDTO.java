@@ -7,18 +7,21 @@ public class AppointmentInfoDTO {
     private String barberFullName;
     private String barberPhotoPath;
     private String clientFullName;
+    private String clientPhoneNumber;
     private LocalDateTime appointmentTime;
     private boolean hariCut;
     private boolean shaving;
-    public AppointmentInfoDTO(){
+
+    public AppointmentInfoDTO() {
 
     }
 
-    public AppointmentInfoDTO(long appointmentId, String barberFullName, String barberPhotoPath, String clientFullName, LocalDateTime appointmentTime, boolean hariCut, boolean shaving) {
+    public AppointmentInfoDTO(long appointmentId, String barberFullName, String barberPhotoPath, String clientFullName, String clientPhoneNumber, LocalDateTime appointmentTime, boolean hariCut, boolean shaving) {
         this.appointmentId = appointmentId;
         this.barberFullName = barberFullName;
         this.barberPhotoPath = barberPhotoPath;
         this.clientFullName = clientFullName;
+        this.clientPhoneNumber = clientPhoneNumber;
         this.appointmentTime = appointmentTime;
         this.hariCut = hariCut;
         this.shaving = shaving;
@@ -56,12 +59,20 @@ public class AppointmentInfoDTO {
         this.clientFullName = clientFullName;
     }
 
-    public LocalDateTime getLocalDateTime() {
+    public String getClientPhoneNumber() {
+        return clientPhoneNumber;
+    }
+
+    public void setClientPhoneNumber(String clientPhoneNumber) {
+        this.clientPhoneNumber = clientPhoneNumber;
+    }
+
+    public LocalDateTime getAppointmentTime() {
         return appointmentTime;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.appointmentTime = localDateTime;
+    public void setAppointmentTime(LocalDateTime appointmentTime) {
+        this.appointmentTime = appointmentTime;
     }
 
     public boolean isHariCut() {
