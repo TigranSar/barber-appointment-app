@@ -27,12 +27,14 @@
             </tr>
             <tr>
                 <th scope="row">Phone Number:</th>
-                <td th:text="${appointment.getClientPhoneNumber()}">+37477885523</td>
+                <td th:text="${appointment.getClientPhoneNumber()}"></td>
             </tr>
             <tr>
                 <th scope="row">Date and Time:</th>
-                <td th:text="${appointment.getAppointmentTime().toString()}">05.05.2025, 15:30</td>
-                <td><a href="">Edit</a></td>
+                <td colspan="2">
+                    <span id="datetime-display" th:text="${appointment.getAppointmentTime()}"></span>
+                    <a th:href="@{/admin/update_time/{id}(id=${appointment.getAppointmentId()})}" id="edit-link" style="margin-left:10px;">Edit</a>
+                </td>
             </tr>
             </tbody>
         </table>

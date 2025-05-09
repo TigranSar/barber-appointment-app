@@ -122,7 +122,7 @@ header{
     top: 25px;
     left: 62%;
 }
-#add_barber_link,#barber_list_link,#appointments_link{
+#add_barber_link,#barber_list_link,#appointments_link,#back_home_link{
     padding: 12px;
     margin-left: 15px;
     border-radius: 25px;
@@ -134,7 +134,7 @@ header{
 #barber_list_link{
 
 }
-#add_barber_link:hover, #log_out_link:hover, #barber_list_link:hover,#appointments_link:hover{
+#add_barber_link:hover, #log_out_link:hover, #barber_list_link:hover,#appointments_link:hover,#back_home_link:hover{
     background-color: #c1c1c169;
 }
 .appointment_block{

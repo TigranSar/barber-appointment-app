@@ -38,7 +38,8 @@ public class AppointmentDAO{
                 appointment.getPhoneNumber(),
                 appointment.getAppointmentDateTime(),
                 appointment.isHairCut(),
-                appointment.isShaving()
+                appointment.isShaving(),
+                appointment.getId()
                 );
     }
     public Appointment getAppointmentById(int id){
@@ -61,7 +62,16 @@ public class AppointmentDAO{
         return count == 0;
     }
     public List<AppointmentInfoDTO> getAllAppointmentInfo(){
-        String sql = "select a.id as appointment_id,b.fullname as barber_fullname,b.photopath as barber_photopath,a.fullname as client_fullname,a.appointmenttime as appointment_time,a.haircut,a.shaving, a.phonenumber as client_phone_number from appointments a inner join barbers b on a.barberid = b.id";
+        String sql = "select a.id as appointment_id," +
+                "b.fullname as barber_fullname," +
+                "b.photopath as barber_photopath," +
+                "a.fullname as client_fullname," +
+                "a.appointmenttime as appointment_time," +
+                "a.haircut,a.shaving, " +
+                "a.phonenumber as client_phone_number " +
+                "from appointments a " +
+                "inner join barbers b " +
+                "on a.barberid = b.id";
         return jdbcTemplate.query(sql,new AppointmentInfoDTORowMapper());
     }
 }

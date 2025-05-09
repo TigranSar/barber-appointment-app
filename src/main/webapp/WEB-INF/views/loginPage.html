@@ -17,8 +17,8 @@
         <input type="text" name="login" placeholder="Login"><br>
         <p th:if="${hasErrors}" class="wrong_error_text" th:text="${wrong_login}"></p>
         <input type="password" name="password" placeholder="Password"><br>
-        <p th:if="${hasErrors}" class="wrong_error_text" th:text="${wrong_password}">wrong password</p>
-        <input type="submit" value="Add" class="submit_button">
+        <p th:if="${hasErrors}" class="wrong_error_text" th:text="${wrong_password}"></p>
+        <input type="submit" value="Log In" class="submit_button">
     </form>
 </div>
 </body>

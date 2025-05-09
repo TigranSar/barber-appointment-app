@@ -16,7 +16,7 @@ public class AppointmentRowMapper implements RowMapper {
         appointment.setPhoneNumber(rs.getString("phoneNumber"));
         appointment.setAppointmentDateTime(rs.getTimestamp("appointmentTime").toLocalDateTime());
         appointment.setHairCut(rs.getBoolean("haircut"));
-        appointment.setHairCut(rs.getBoolean("shaving"));
+        appointment.setShaving(rs.getBoolean("shaving"));
         return appointment;
     }
 }

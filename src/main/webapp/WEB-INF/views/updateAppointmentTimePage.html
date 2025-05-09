@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" th:href="@{/css/webStyle.css}">
+</head>
+<body>
+<header>
+    <a th:href="@{/admin/add_barber_page}" id="add_barber_link">Add barber</a>
+    <a th:href="@{/admin/barberList}" id="barber_list_link">Barbers</a>
+    <a th:href="@{/admin/appointments}" id="appointments_link">Appointments</a>
+    <a th:href="@{/admin/logout}" id="log_out_link">Log out</a>
+</header>
+<br><br><br><br>
+<div class="default_place" style="height: 200px; width: 350px;">
+    <p class="top_text">Update Time</p>
+    <form th:action="@{/admin/update_time}" method="post">
+        <input type="hidden" name="appointment_id" th:value="${appointment_id}">
+        <input type="hidden" name="barber_id" th:value="${barber_id}">
+        <input type="datetime-local" name="time" th:value="${time}" style="margin-left: 40px;width: 260px;height: 30px;"><br>
+        <p th:if="${hasError}" class="wrong_error_text" th:text="${error}"></p>
+        <input type="submit" value="save" style="width: 150px; height: 40px;margin-top: 15px;margin-left: 100px;">
+    </form>
+</div>
+</body>
+</html>
