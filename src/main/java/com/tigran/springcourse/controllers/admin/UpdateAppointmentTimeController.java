@@ -38,28 +38,22 @@ public class UpdateAppointmentTimeController {
     @PostMapping("/update_time")
     public String updateAppointmentTime(@RequestParam("appointment_id") int appointment_id,
                                         @RequestParam("barber_id") int barber_id,
-                                        @RequestParam("time") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)LocalDateTime localDateTime,
+                                        @RequestParam("time") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)LocalDateTime appointmentTime,
                                         HttpSession session,
                                         Model model){
         String sessionString = (String)session.getAttribute("admin");
-        if (sessionString != null){
-            boolean hasError = false;
-            if (!appointmentDAO.isTimeAvailable(localDateTime,barber_id)){
-                hasError = true;
-                model.addAttribute("error","this time is not available");
-            }else if (localDateTime.isBefore(LocalDateTime.now().minusMinutes(1))) {
-                hasError = true;
-                model.addAttribute("error", "Time can't be in the past");
-            }
-            if (hasError){
-                model.addAttribute("hasError",hasError);
-                return "updateAppointmentTimePage";
-            }
-            Appointment appointment = appointmentDAO.getAppointmentById(appointment_id);
-            appointment.setAppointmentDateTime(localDateTime);
-            appointmentDAO.updateAppointment(appointment);
-            return "redirect:/admin/appointments";
+        if (sessionString == null){
+            return "redirect:/admin/login_page";
         }
-        return "redirect:/admin/login_page";
+        String error = appointmentTimeService.UpdateAppointment(appointment_id,barber_id,appointmentTime);
+        if (error != null){
+            model.addAttribute("error",error);
+            model.addAttribute("hasError", true);
+            model.addAttribute("time",appointmentTime);
+            model.addAttribute("appointment_id",appointment_id);
+            model.addAttribute("barber_id",barber_id);
+            return "updateAppointmentTimePage";
+        }
+        return "redirect:/admin/appointments";
     }
 }

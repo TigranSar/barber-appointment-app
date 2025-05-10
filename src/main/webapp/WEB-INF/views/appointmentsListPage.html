@@ -36,6 +36,10 @@
                     <a th:href="@{/admin/update_time/{id}(id=${appointment.getAppointmentId()})}" id="edit-link" style="margin-left:10px;">Edit</a>
                 </td>
             </tr>
+            <tr>
+                <th scope="row">Service Type:</th>
+                <td th:text="${serviceType.DetermineServiceType(appointment.isHariCut(),appointment.isShaving())}"></td>
+            </tr>
             </tbody>
         </table>
     </div>

@@ -16,18 +16,15 @@ public class UpdateAppointmentTimeService {
         this.appointmentDAO = appointmentDAO;
     }
 
-    public String UpdateAppointment(int appointment_id, LocalDateTime appointmentTime, Model model){
-        if (!appointmentDAO.isTimeAvailable(appointmentTime,appointment_id)){
-            model.addAttribute("error","this time is not available");
-            return "appointmentsListPage";
-        }else if (appointmentTime.isBefore(LocalDateTime.now().minusMinutes(1))){
-            model.addAttribute("error","Time can't be in the past");
-            return "appointmentsListPage";
-        }else {
-            Appointment appointment = appointmentDAO.getAppointmentById(appointment_id);
-            appointment.setAppointmentDateTime(appointmentTime);
-            appointmentDAO.updateAppointment(appointment);
-            return "redirect:/admin/appointments";
+    public String UpdateAppointment(int appointment_id, int barber_id, LocalDateTime appointmentTime){
+        if (!appointmentDAO.isTimeAvailable(appointmentTime,barber_id)){
+            return "This time is not available";
+        }else if (appointmentTime.isBefore(LocalDateTime.now().minusMinutes(1))) {
+            return "Time can't be in the past";
         }
+        Appointment appointment = appointmentDAO.getAppointmentById(appointment_id);
+        appointment.setAppointmentDateTime(appointmentTime);
+        appointmentDAO.updateAppointment(appointment);
+        return null;
     }
 }
