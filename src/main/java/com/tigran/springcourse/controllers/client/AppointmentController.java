@@ -1,4 +1,4 @@
-package com.tigran.springcourse.controllers;
+package com.tigran.springcourse.controllers.client;
 
 import com.tigran.springcourse.dao.AppointmentDAO;
 import com.tigran.springcourse.dao.BarberDAO;

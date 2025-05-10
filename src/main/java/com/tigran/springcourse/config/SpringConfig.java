@@ -1,7 +1,8 @@
 package com.tigran.springcourse.config;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.multipart.MultipartResolver;
@@ -9,7 +10,6 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -22,12 +22,15 @@ import javax.sql.DataSource;
 @Configuration
 @ComponentScan("com.tigran.springcourse")
 @EnableWebMvc
+@PropertySource("classpath:database.properties")
 public class SpringConfig implements WebMvcConfigurer{
     private final ApplicationContext applicationContext;
+    private final Environment environment;
 
     @Autowired
-    public SpringConfig(ApplicationContext applicationContext) {
+    public SpringConfig(ApplicationContext applicationContext, Environment environment) {
         this.applicationContext = applicationContext;
+        this.environment = environment;
     }
 
     @Bean
@@ -65,10 +68,10 @@ public class SpringConfig implements WebMvcConfigurer{
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource driverManager = new DriverManagerDataSource();
-        driverManager.setDriverClassName("org.postgresql.Driver");
-        driverManager.setUrl("jdbc:postgresql://localhost:5432/barber_db");
-        driverManager.setUsername("postgres");
-        driverManager.setPassword("tigran2001");
+        driverManager.setDriverClassName(environment.getProperty("driver"));
+        driverManager.setUrl(environment.getProperty("url"));
+        driverManager.setUsername(environment.getProperty("db.username"));
+        driverManager.setPassword(environment.getProperty("db.password"));
         return driverManager;
     }
     @Bean
