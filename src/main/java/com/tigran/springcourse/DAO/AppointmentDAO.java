@@ -71,7 +71,8 @@ public class AppointmentDAO{
                 "a.phonenumber as client_phone_number " +
                 "from appointments a " +
                 "inner join barbers b " +
-                "on a.barberid = b.id";
+                "on a.barberid = b.id" +
+                "ORDER BY ABS(EXTRACT(EPOCH FROM (appointmenttime - now())))";
         return jdbcTemplate.query(sql,new AppointmentInfoDTORowMapper());
     }
 }

@@ -28,7 +28,7 @@ public class UpdateBarberController {
         String session = (String)httpSession.getAttribute("admin");
         if (session != null) {
             model.addAttribute("barber", barberDAO.getBarberById(id));
-            return "updateBarber";
+            return "admin/updateBarber";
         }
         return "redirect:/admin/login_page";
     }

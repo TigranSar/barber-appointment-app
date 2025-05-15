@@ -40,7 +40,7 @@ public class AddBarberController {
             return "redirect:/admin/login_page";
         }
         model.addAttribute("barber",new Barber());
-        return "addBarberPage";
+        return "admin/addBarberPage";
     }
 
     @PostMapping("/add_barber")
@@ -52,7 +52,7 @@ public class AddBarberController {
         if (session != null) {
             barberValidator.validate(barber,bindingResult);
             if (bindingResult.hasErrors()){
-                return "addBarberPage";
+                return "admin/addBarberPage";
             }
             String photoPath = fileService.saveImage(file);
             if (photoPath != null){

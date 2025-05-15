@@ -30,9 +30,9 @@ public class UpdateAppointmentTimeController {
             Appointment appointment = appointmentDAO.getAppointmentById(id);
             model.addAttribute("barber_id",appointment.getBarberId());
             model.addAttribute("time", appointment.getAppointmentDateTime());
-            return "updateAppointmentTimePage";
+            return "admin/updateAppointmentTimePage";
         }
-        return "loginPage";
+        return "client/loginPage";
     }
 
     @PostMapping("/update_time")
@@ -52,7 +52,7 @@ public class UpdateAppointmentTimeController {
             model.addAttribute("time",appointmentTime);
             model.addAttribute("appointment_id",appointment_id);
             model.addAttribute("barber_id",barber_id);
-            return "updateAppointmentTimePage";
+            return "admin/updateAppointmentTimePage";
         }
         return "redirect:/admin/appointments";
     }

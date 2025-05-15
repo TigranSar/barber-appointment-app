@@ -23,6 +23,6 @@ public class BarberListController {
         if (session == null){
             return "redirect:login_page";
         }
-        return "barberList";
+        return "admin/barberList";
     }
 }

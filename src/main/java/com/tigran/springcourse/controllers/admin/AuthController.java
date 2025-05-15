@@ -15,7 +15,7 @@ public class AuthController {
 
     @GetMapping("/login_page")
     public String loginPage(){
-        return "loginPage";
+        return "client/loginPage";
     }
     @PostMapping("/login")
     public String login(@RequestParam("login") String login,
@@ -33,7 +33,7 @@ public class AuthController {
         }
         if (hasErrors){
             model.addAttribute("hasErrors",hasErrors);
-            return "loginPage";
+            return "client/loginPage";
         }
         httpSession.setAttribute("admin","admin12345");
         return "redirect:appointments";

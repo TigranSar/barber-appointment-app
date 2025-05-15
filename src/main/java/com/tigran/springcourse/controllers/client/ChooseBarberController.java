@@ -17,6 +17,6 @@ public class ChooseBarberController {
     @GetMapping("/choose_barber")
     public String chooseBarber(Model model){
         model.addAttribute("barberList",barberDAO.getAllBarbers());
-        return "chooseBarberList";
+        return "client/chooseBarberList";
     }
 }

@@ -39,7 +39,7 @@ public class AppointmentController {
         appointment.setBarberId(id);
         model.addAttribute("barber", barberDAO.getBarberById(id));
         model.addAttribute("appointment",appointment);
-        return "appointmentForm";
+        return "client/appointmentForm";
     }
     @PostMapping("/sendAppointment")
     public String sendAppointment(@ModelAttribute("appointment") @Valid Appointment appointment,
@@ -47,7 +47,7 @@ public class AppointmentController {
         appointmentValidator.validate(appointment,bindingResult);
         if (bindingResult.hasErrors()){
             model.addAttribute("barber",barberDAO.getBarberById(appointment.getBarberId()));
-            return "appointmentForm";
+            return "client/appointmentForm";
         }
         appointmentDAO.addAppointment(appointment);
         redirectAttributes.addFlashAttribute("successMessage","Your appointment successfully booked for " + appointment.getAppointmentDateTime().toString());

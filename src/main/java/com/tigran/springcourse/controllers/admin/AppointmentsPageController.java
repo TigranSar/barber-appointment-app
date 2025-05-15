@@ -30,7 +30,7 @@ public class AppointmentsPageController {
             model.addAttribute("serviceType",serviceTypeService);
             model.addAttribute("appointmentInfo",appointmentDAO.getAllAppointmentInfo());
             httpSession.setMaxInactiveInterval(15*60);
-            return "appointmentsListPage";
+            return "admin/appointmentsListPage";
         }
         return "redirect:/admin/login_page";
     }
