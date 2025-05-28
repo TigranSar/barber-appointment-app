@@ -17,8 +17,7 @@ A web application for booking appointments with barbers, built with Java and Spr
 - **JdbcTemplate**
 - **Thymeleaf**
 - **PostgreSQL**
-- **HTML / CSS / Bootstrap**
+- **HTML / CSS **
 - **Maven**
 
-## 📁 Project Structure
 
